@@ -1,6 +1,8 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: osx-arm64
+Flask==2.2.2
+gunicorn==20.1.0
 _tflow_select=2.2.0=eigen
 abseil-cpp=20211102.0=hc377ac9_0
 absl-py=1.4.0=py311hca03da5_0
