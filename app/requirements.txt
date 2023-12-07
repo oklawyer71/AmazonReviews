@@ -1,5 +1,6 @@
 cloudpickle==3.0.0
 Flask==3.0.0
+gensim==4.3.0
 gunicorn==21.2.0
 ipython==8.17.2
 jupyter_core==5.5.0
