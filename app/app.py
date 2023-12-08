@@ -31,4 +31,3 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
-view rawHerokuIncomePredictionApp hosted with ❤ by GitHub
