@@ -1,167 +1,145 @@
 <!DOCTYPE html>
-<html >
-<!--From https://codepen.io/frytyler/pen/EGdtg-->
-<head>
-    <meta charset="UTF-8">
-    <title>ML Deployment using Heroku</title>
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-</head>
-
-<body>
-    <div class="prediction">
-        <h1>Income Prediction</h1>
-        <form action="{{ url_for('predict')}}"method="post">
-		<label for="age">Age</label>
-		<input type="text" id="age" name="age" required="required">
-		<br>
-    		<label for="workclass">Working Class</label>
-    		<select id="workclass" name="workclass" required="required">
-      			<option value="1">Federal-gov</option>
-      			<option value="2">Local-gov</option>
-      			<option value="3">Never-worked</option>
-      			<option value="4">Private</option>
-      			<option value="5">Self-emp-inc</option>
-      			<option value="6">Self-emp-not-inc</option>
-      			<option value="7">State-gov</option>
-      			<option value="8">Without-pay</option>
-    		</select>
-    		<br>
-		<label for="education">Education</label>
-    		<select id="education" name="education" required="required">
-      			<option value="0">10th</option>
-      			<option value="1">11th</option>
-		      	<option value="2">12th</option>
-		      	<option value="3">1st-4th</option>
-				<option value="4">5th-6th</option>
-      			<option value="5">7th-8th</option>
-      			<option value="6">9th</option>
-      			<option value="7">Assoc-acdm</option>
-      			<option value="8">Assoc-voc</option>
-      			<option value="9">Bachelors</option>
-      			<option value="10">Doctorate</option>
-      			<option value="11">HS-grad</option>
-      			<option value="12">Masters</option>
-      			<option value="13">Preschool</option>
-      			<option value="14">Prof-school</option>
-      			<option value="15">Some-college</option>
-    		</select>
-    		<br>
-    		<label for="marital-status">Marital Status</label>
-    		<select id="marital-status" name="marital-status" required="required">
-      			<option value="0">Divorced</option>
-      			<option value="1">Married-AF-spouse</option>
-      			<option value="2">Married-civ-spouse</option>
-				<option value="3">Married-spouse-absent</option>
-				<option value="4">Never-married'</option>
-				<option value="5">Separated</option>
-				<option value="6">Widowed</option>
-    		</select>
-    		<br>
-		<label for="occupation">Occupation</label>
-    		<select id="occupation" name="occupation" required="required">
-      			<option value="1">Adm-clerical</option>
-      			<option value="2">Armed-Forces</option>
-      			<option value="3">Craft-repair</option>
-      			<option value="4">Exec-managerial</option>
-      			<option value="5">Farming-fishing</option>
-      			<option value="6">Handlers-cleaners</option>
-      			<option value="7">Machine-op-inspct</option>
-      			<option value="8">Other-service</option>
-      			<option value="9">Priv-house-serv</option>
-      			<option value="10">Prof-specialty</option>
-      			<option value="11">Protective-serv</option>
-      			<option value="12">Sales</option>
-      			<option value="13">Tech-support</option>
-      			<option value="14">Transport-moving</option>
-    		</select>
-    		<br>
-    		<label for="relationship">Relationship</label>
-    		<select id="relationship" name="relationship" required="required">
-      			<option value="0">Husband</option>
-      			<option value="1">Not-in-family</option>
-      			<option value="2">Other-relative</option>
-      			<option value="3">Own-child</option>
-      			<option value="4">Unmarried</option>
-      			<option value="5">Wife</option>
-    		</select>
-    		<br>
-    		<label for="race">Race</label>
-    		<select id="race" name="race" required="required">
-      			<option value="0">Amer Indian Eskimo</option>
-      			<option value="1">Asian Pac Islander</option>
-      			<option value="2">Black</option>
-      			<option value="3">Other</option>
-      			<option value="4">White</option>
-    		</select>
-    		<br>
-    		<label for="gender">Gender</label>
-    		<select id="gender" name="gender" required="required">
-      			<option value="0">Female</option>
-      			<option value="1">Male</option>
-    		</select>
-    		<br>
-    		<label for="capital-gain">Capital Gain </label>
-    		<input type="text" id="capital-gain" name="capital-gain" required="required">btw:[0-99999]
-    		<br>
-    		<label for="capital-loss">Capital Loss </label>
-    		<input type="text" id="capital-loss" name="capital-loss" required="required">btw:[0-4356]
-    		<br>
-    		<label for="hours-per-week">Hours per Week </label>
-    		<input type="text" id="hours-per-week" name="hours-per-week" required="required">btw:[1-99]
-    		<br>
-    		<label for="native-country">Native Country</label>
-    		<select id="native-country" name="native-country" required="required">
-      			<option value="1">Cambodia</option>
-      			<option value="2">Canada</option>
-      			<option value="3">China</option>
-      			<option value="4">Columbia</option>
-      			<option value="5">Cuba</option>
-      			<option value="6">Dominican Republic</option>
-      			<option value="7">Ecuador</option>
-      			<option value="8">El Salvadorr</option>
-      			<option value="9">England</option>
-      			<option value="10">France</option>
-      			<option value="11">Germany</option>
-      			<option value="12">Greece</option>
-      			<option value="13">Guatemala</option>
-      			<option value="14">Haiti</option>
-      			<option value="15">Netherlands</option>
-      			<option value="16">Honduras</option>
-      			<option value="17">HongKong</option>
-      			<option value="18">Hungary</option>
-      			<option value="19">India</option>
-      			<option value="20">Iran</option>
-      			<option value="21">Ireland</option>
-      			<option value="22">Italy</option>
-      			<option value="23">Jamaica</option>
-      			<option value="24">Japan</option>
-      			<option value="25">Laos</option>
-      			<option value="26">Mexico</option>
-      			<option value="27">Nicaragua</option>
-      			<option value="28">Outlying-US(Guam-USVI-etc)</option>
-      			<option value="29">Peru</option>
-      			<option value="30">Philippines</option>
-      			<option value="31">Poland</option>
-      			<option value="32">Portugal</option>
-      			<option value="33">Puerto-Rico</option>
-      			<option value="34">Scotland</option>
-      			<option value="35">South</option>
-      			<option value="36">Taiwan</option>
-      			<option value="37">Thailand</option>
-      			<option value="38">Trinadad&Tobago</option>
-      			<option value="39">United States</option>
-      			<option value="40">Vietnam</option>
-      			<option value="41">Yugoslavia</option>
-    		</select>
-    		<br>
-        	<button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-        </form>
-
-       <br>
-       <b>{{ prediction_text }}</b>
-    </div>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <style>
+    html,body {
+      margin:0;
+      padding:0;
+      font-family:Arial;
+      font-size:10px;
+    }
+    body {
+      padding: 20px 45px;
+    }
+    </style>
+  </head>
+  <body>
+      <form id="predict" method="POST">
+        <p>Q1. What is the age of the individual? </p>
+        <label><input type="radio" name="person_age" value="10" checked>10</label>
+        <label><input type="radio" name="person_age" value="21">21</label>
+        <label><input type="radio" name="person_age" value="32">32</label>
+        <label><input type="radio" name="person_age" value="42">42</label>
+        <label><input type="radio" name="person_age" value="54">54</label>
+        <hr>
+        <p>Q2. What is the sex of the individual ?</p>
+        <label><input type="radio" name="person_sex" value="1" checked>Male</label>
+        <label><input type="radio" name="person_sex" value="0">Female</label>
+        <hr>
+        <p>Q3. Does the patient have exercise induced angina ?</p>
+        <label><input type="radio" name="exercise_angina" value="0" checked>Yes</label>
+        <label><input type="radio" name="exercise_angina" value="1">No</label>
+        <hr>
+        <p>Q4. What is the value of resting blood pressure?</p>
+        <label><input type="radio" name="resting_bp" value="120" checked>120</label>
+        <label><input type="radio" name="resting_bp" value="130">130</label>
+        <label><input type="radio" name="resting_bp" value="140">140</label>
+        <label><input type="radio" name="resting_bp" value="150">150</label>
+        <hr>
+        <p>Q5. What is the value of serum cholesterol in mg/dl?</p>
+        <label><input type="radio" name="serum_chol" value="210" checked>210</label>
+        <label><input type="radio" name="serum_chol" value="220">220</label>
+        <label><input type="radio" name="serum_chol" value="230">230</label>
+        <label><input type="radio" name="serum_chol" value="240">240</label>
+        <label><input type="radio" name="serum_chol" value="250">250</label>
+        <label><input type="radio" name="serum_chol" value="260">260</label>
+        <hr>
+        <p>Q6. Is fasting blood sugar greater than 120mg/dl?</p>
+        <label><input type="radio" name="fasting_blood_sugar" value="1" checked>True</label>
+        <label><input type="radio" name="fasting_blood_sugar" value="0">False</label>
+        <hr>
+        <p>Q7. What is the resting ECG results?</p>
+        <label><input type="radio" name="ecg_results" value="1" checked>Normal</label>
+        <label><input type="radio" name="ecg_results" value="2">Having ST-T wave abnormal</label>
+        <label><input type="radio" name="ecg_results" value="0">hypertrophy</label>
+        <hr>
+        <p>Q8. What is the maximum heart rate acheived ?</p>
+        <label><input type="radio" name="max_heart_rate" value="150" checked>150</label>
+        <label><input type="radio" name="max_heart_rate" value="160">160</label>
+        <label><input type="radio" name="max_heart_rate" value="170">170</label>
+        <label><input type="radio" name="max_heart_rate" value="180">180</label>
+        <label><input type="radio" name="max_heart_rate" value="190">190</label>
+        <hr>
+        <p>Q9. Does the patient have chest pain?</p>
+        <label><input type="radio" name="chest_pain" value="1" checked>Typical Angina</label>
+        <label><input type="radio" name="chest_pain" value="2">Atypical Angina</label>
+        <label><input type="radio" name="chest_pain" value="3">Non-anginal pain </label>
+        <label><input type="radio" name="chest_pain" value="0">hypertrophy</label>
+        <hr>
+        <p>Q10. Does the patient have ST depression induced by exercise relative to rest?</p>
+        <label><input type="radio" name="st_depression" value="0.6" checked>0.6</label>
+        <label><input type="radio" name="st_depression" value="1.0">1.0</label>
+        <label><input type="radio" name="st_depression" value="1.5">1.5</label>
+        <label><input type="radio" name="st_depression" value="2.0">2.0</label>
+        <label><input type="radio" name="st_depression" value="2.5">2.5</label>
+        <label><input type="radio" name="st_depression" value="0">0</label>
+        <hr>
+        <p>Q11. What is the slope of peak exercise ST segment ?</p>
+        <label><input type="radio" name="slope" value="1" checked>Flat</label>
+        <label><input type="radio" name="slope" value="2">Upsloping</label>
+        <label><input type="radio" name="slope" value="0">DownSloping</label>
+        <hr>
+        <p>Q12. What is the number of major vessels colored by flouroscopy ?</p>
+        <label><input type="radio" name="number_vessels" value="1" checked>1</label>
+        <label><input type="radio" name="number_vessels" value="2">2</label>
+        <label><input type="radio" name="number_vessels" value="3">3</label>
+        <label><input type="radio" name="number_vessels" value="0">0</label>
+        <hr>
+        <p>Q13. What is the thal factor ?</p>
+        <label><input type="radio" name="thal" value="1" checked>Fixed defect</label>
+        <label><input type="radio" name="thal" value="2">Normal</label>
+        <label><input type="radio" name="thal" value="3">Reversible Defect</label>
+        <br><br>
+        <input type="submit" value="Predict!">
+    </form>
+    <hr>
+    <div id="predictionOutcome"></div>
+    <script>
+      $("form#predict").submit(function(event) {
+          event.preventDefault();
+          var allElements=event.target.elements;
+          var json={
+            "age":allElements.person_age.value,
+            "sex":allElements.person_sex.value,
+            "exng":allElements.exercise_angina.value,
+            "trbps":allElements.resting_bp.value,
+            "chol":allElements.serum_chol.value,
+            "fbs":allElements.fasting_blood_sugar.value,
+            "ecg_results":allElements.ecg_results.value,
+            "thalach":allElements.max_heart_rate.value,
+            "chol":allElements.serum_chol.value,
+            "restecg":allElements.ecg_results.value,
+            "max_heart_rate":allElements.max_heart_rate.value,
+            "cp":allElements.chest_pain.value,
+            "oldpeak":allElements.st_depression.value,
+            "slp":allElements.slope.value,
+            "caa":allElements.number_vessels.value,
+            "thall":allElements.thal.value
+          }
+          var jsonStr=JSON.stringify(json)
+          console.log(jsonStr)
+          $.ajax({
+            url: "/api/predict",
+            data: JSON.parse(jsonStr),
+            method: "GET",
+            success: function(result) {
+                let predictedResult=result;
+                let htmlStr="";
+                if(predictedResult=="Yes") {
+                  htmlStr+="<b>Yes, </b> he/she/they have a likelihood of developing heart disease.";
+                } else if(predictedResult=="No") {
+                  htmlStr+="<b>No, </b> he/she/they are unlikely to develop heart disease.";
+                }
+                $("#predictionOutcome").html(htmlStr);
+            },
+            error: function(err) {
+              console.log(err);
+            }
+          });
+          return false
+      });
+    </script>
+  </body>
 </html>
