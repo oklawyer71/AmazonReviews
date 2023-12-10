@@ -1,2 +1,2 @@
-# heart_attack_predict
-ML prediction for heart attacks.
+# Amazon Reviews
+ML prediction for Amazon Reviews.
