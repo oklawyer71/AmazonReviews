@@ -1,5 +1,4 @@
 from flask import Flask,request, url_for, redirect, render_template, jsonify
-from pycaret.classification import *
 import pandas as pd
 import json
 import os
