@@ -17,7 +17,7 @@ app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 @app.route("/intertopic")
 def index():
     print(os.getcwd())
-    return render_template("./index.html")
+    return render_template("./intertopic.html")
 
 
 # feedback from Michael: the @app.route("/") try to add some text after the "/" and see what that does.
