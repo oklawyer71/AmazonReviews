@@ -20,7 +20,7 @@ def index():
     return render_template("./home.html")
 
 
-# instantiate index page
+# instantiate intertopic page
 @app.route("/intertopic")
 def index():
     print(os.getcwd())
