@@ -23,5 +23,5 @@ def index():
 # instantiate intertopic page
 @app.route("/intertopic")
 def intertopic():
-    print(os.getcwd())
-    return render_template("./intertopic.html")
+    textout = "Intertopic Map"
+    return render_template("intertopic.html", textout=textout)
