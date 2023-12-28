@@ -25,3 +25,10 @@ def index():
 def intertopic():
     textout = "Intertopic Map"
     return render_template("intertopic.html", textout=textout)
+
+
+# instantiate Milestone 3's page
+@app.route("/milestone3")
+def intertopic():
+    textout = "Milestone 3 - Sentiment Analysis"
+    return render_template("milestone3.html", textout=textout)
