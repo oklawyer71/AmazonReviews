@@ -14,10 +14,10 @@ app = Flask(__name__)
 app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
 
 # instantiate index page
-@app.route("/")
-def index():
-    print(os.getcwd())
-    return render_template("./home.html")
+# @app.route("/")
+# def index():
+    # print(os.getcwd())
+    # return render_template("./home.html")
 
 
 # instantiate intertopic page
