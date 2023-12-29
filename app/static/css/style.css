@@ -25,7 +25,7 @@
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-  display: inline-block;
+  display: block;
 }
 
 /* Add a black background color to the top navigation */
@@ -58,7 +58,7 @@
 
 /* Dropdown container - needed to position the dropdown content */
 .dropdown {
-  float: left;
+  float: block;
   overflow: hidden;
 }
 
