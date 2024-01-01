@@ -19,11 +19,23 @@ def index():
     print(os.getcwd())
     return render_template("./home.html")
 
-# instantiate intertopic page
+# instantiate dataset page
 @app.route("/dataset")
 def dataset():
     textout = "Dataset Used"
     return render_template("dataset.html", textout=textout)
+
+# instantiate data preparation page
+@app.route("/data-preparation")
+def dataprep():
+    textout = "Data Preparation"
+    return render_template("data-preparation.html", textout=textout)
+
+# instantiate data modelling page
+@app.route("/data-modelling")
+def datamodel():
+    textout = "Data Modelling"
+    return render_template("data-modelling.html", textout=textout)
 
 # instantiate intertopic page
 @app.route("/intertopic")
