@@ -49,9 +49,14 @@ def milestone3():
     textout = "Milestone 3 - Sentiment Analysis"
     return render_template("milestone3.html", textout=textout)
 
-
-# instantiate Milestone 3's page
+# instantiate Milestone 4's page
 @app.route("/milestone4")
 def milestone4():
     textout = "Milestone 4 - Final Project"
     return render_template("milestone4.html", textout=textout)
+
+# instantiate Citations page
+@app.route("/citations")
+def citations():
+    textout = "Citations"
+    return render_template("citations.html", textout=textout)
