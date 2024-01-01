@@ -8,6 +8,11 @@
   z-index: 1;
 }
 
+/* Images dynamic resize based on the width of the browser */
+.images {
+  max-width: 100%;
+}
+
 /* Links inside the dropdown */
 .dropdown-content a {
   float: none;
