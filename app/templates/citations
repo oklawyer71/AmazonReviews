@@ -1,0 +1,18 @@
+{% extends "layouts/main.html" %}
+{% block head %}
+{% endblock %}
+
+{% block content%}
+
+
+</body>
+
+<h2><u>Citations</u></h2>
+<h4><u>Web Development Structure & Tutorial:</u><h4>
+<p>J. McAuley and J. Leskovec. From amateurs to connoisseurs: modeling the evolution of user expertise through online reviews. WWW, 2013.</p>
+
+<h4><u>Dataset:</u><h4>
+<p>Blago, A. (2022, August 25). Flask Tutorial: Simple login for your webpage (python). Medium. https://python.plainenglish.io/flask-tutorial-simple-login-for-your-webpage-python-7029154ab6fa</p>
+
+</body>
+{% endblock %}
