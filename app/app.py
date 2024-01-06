@@ -4,9 +4,6 @@ import json
 import os
 import sys
 import logging
-import pickle
-from sklearn.preprocessing import StandardScaler
-model_filename="./model"
 import numpy as np
 
 # Initalise the Flask app
