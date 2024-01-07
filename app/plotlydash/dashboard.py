@@ -8,7 +8,7 @@ from .data import create_dataframe
 from .layout import html_layout
 
 
-def init_dashboard(server):
+def create_dashboard(server):
     """Create a Plotly Dash dashboard."""
     dash_app = dash.Dash(
         server=server,
