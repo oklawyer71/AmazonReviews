@@ -10,7 +10,7 @@ from .data import create_dataframe
 from .layout import html_layout
 
 
-def create_dashboard(app: Flask):
+def create_dashboard(app):
     """Create a Plotly Dash dashboard."""
     dash_app = dash.Dash(
         server=app,
