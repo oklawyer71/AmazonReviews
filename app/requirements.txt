@@ -12,3 +12,8 @@ pandas==1.5.3
 scikit-base==0.5.2
 scikit-learn==1.2.2
 scikit-plot==0.3.7
+dash-core-components==2.0.0
+dash-html-components==2.0.0
+dash-renderer==1.9.1
+dash-table==5.0.0
+dash==2.14.2
