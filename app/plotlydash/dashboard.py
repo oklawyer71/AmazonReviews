@@ -51,3 +51,22 @@ def create_dashboard(server):
         id="dash-container",
     )
     return dash_app.server
+
+
+def create_data_table(df: DataFrame) -> DataTable:
+    """
+    Create Dash DataTable object from Pandas DataFrame.
+
+    :param DataFrame df: Pandas DataFrame from which to build a Dash table.
+
+    :returns: DataTable
+    """
+    table = DataTable(
+        id="database-table",
+        columns=[{"name": i, "id": i} for i in df.columns],
+        data=df.to_dict("records"),
+        sort_action="native",
+        sort_mode="native",
+        page_size=300,
+    )
+    return table
