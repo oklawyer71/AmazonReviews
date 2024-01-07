@@ -10,10 +10,10 @@ def index():
     return render_template("./home.html")
 
 # instantiate dashboard page
-@app.route("/dashboard")
-def dashboard():
-    textout = "Home page of Flask Application."
-    return render_template("dashboard.jinja2",textout=textout)
+#@app.route("/dashboard")
+#def dashboard():
+    #textout = "Home page of Flask Application."
+    #return render_template("dashboard.jinja2",textout=textout)
 
 # instantiate dataset page
 @app.route("/dataset")
