@@ -8,10 +8,10 @@ from .data import create_dataframe
 from .layout import html_layout
 
 
-def create_dashboard(server):
+def create_dashboard(app: Flask):
     """Create a Plotly Dash dashboard."""
     dash_app = dash.Dash(
-        server=server,
+        server=app,
         routes_pathname_prefix='/dashapp/',
         external_stylesheets=[
             '/static/css/dashcss.css',
@@ -22,10 +22,10 @@ def create_dashboard(server):
     df = create_dataframe()
 
     # Custom HTML layout
-    dash_app.index_string = html_layout
+    dash_module.index_string = html_layout
 
     # Create Layout
-    dash_app.layout = html.Div(
+    dash_module.layout = html.Div(
         children=[
             dcc.Graph(
                 id="histogram-graph",
@@ -50,7 +50,7 @@ def create_dashboard(server):
         ],
         id="dash-container",
     )
-    return dash_app.server
+    return dash_module.server
 
 
 def create_data_table(df: DataFrame) -> DataTable:
