@@ -4,6 +4,8 @@ from dash import dash_table
 from dash import dcc
 from dash import html
 
+from flask import Flask
+
 from .data import create_dataframe
 from .layout import html_layout
 
