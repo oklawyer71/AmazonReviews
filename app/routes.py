@@ -9,17 +9,11 @@ def index():
     print(os.getcwd())
     return render_template("./home.html")
 
+# instantiate dashboard page
 @app.route("/dashboard")
-def home():
-    """Home page of Flask Application."""
-    return render_template(
-        "dashboard.jinja2",
-        title="Plotly Dash Flask Tutorial",
-        description="Embed Plotly Dash into your Flask applications.",
-        template="home-template",
-        body="This is a homepage served with Flask.",
-        base_url=request.base_url,
-    )
+def dashboard():
+    textout = "Home page of Flask Application."
+    return render_template("dashboard.jinja2",textout=textout)
 
 # instantiate dataset page
 @app.route("/dataset")
