@@ -8,17 +8,17 @@ class Config:
     """Flask configuration variables."""
 
     # General Config
-    ENVIRONMENT = environ.get("ENVIRONMENT")
+    #ENVIRONMENT = environ.get("ENVIRONMENT")
     FLASK_APP = "main.py"
-    FLASK_DEBUG = environ.get("FLASK_DEBUG")
-    SECRET_KEY = environ.get("SECRET_KEY")
+    #FLASK_DEBUG = environ.get("FLASK_DEBUG")
+    #SECRET_KEY = environ.get("SECRET_KEY")
 
     # Assets
-    LESS_BIN = environ.get("LESS_BIN")
-    ASSETS_DEBUG = environ.get("ASSETS_DEBUG")
-    LESS_RUN_IN_DEBUG = environ.get("LESS_RUN_IN_DEBUG")
+    #LESS_BIN = environ.get("LESS_BIN")
+    #ASSETS_DEBUG = environ.get("ASSETS_DEBUG")
+    #LESS_RUN_IN_DEBUG = environ.get("LESS_RUN_IN_DEBUG")
 
     # Static Assets
-    STATIC_FOLDER = "static"
+    STATIC_FOLDER = "static/css"
     TEMPLATES_FOLDER = "templates"
-    COMPRESSOR_DEBUG = environ.get("COMPRESSOR_DEBUG")
+    #COMPRESSOR_DEBUG = environ.get("COMPRESSOR_DEBUG")
