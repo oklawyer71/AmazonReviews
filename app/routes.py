@@ -1,6 +1,7 @@
 """Routes for parent Flask app."""
 from flask import current_app as app
 from flask import render_template, request
+import os
 
 # instantiate index page
 @app.route("/")
