@@ -14,9 +14,7 @@ def create_dashboard(server):
         server=server,
         routes_pathname_prefix='/dashapp/',
         external_stylesheets=[
-            '/static/css/style.css',
-            '/static/css/normalize.css',
-            '/static/css/skeleton.css',
+            '/static/css/dashcss.css',
         ]
     )
 
