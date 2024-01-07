@@ -7,7 +7,7 @@ def init_dashboard(server):
         server=server,
         routes_pathname_prefix='/dashapp/',
         external_stylesheets=[
-            '/static/dist/css/styles.css',
+            '/static/css/styles.css',
         ]
     )
 
