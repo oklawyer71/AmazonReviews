@@ -28,16 +28,10 @@ def dataprep():
     return render_template("data-preparation.html", textout=textout)
 
 # instantiate data modelling page
-@app.route("/data-modelling1")
+@app.route("/data-modelling")
 def datamodel1():
-    textout = "Data Modelling 1"
-    return render_template("data-modelling1.html", textout=textout)
-
-# instantiate data modelling page
-@app.route("/data-modelling2")
-def datamodel2():
-    textout = "Data Modelling 2"
-    return render_template("data-modelling2.html", textout=textout)
+    textout = "Data Modelling"
+    return render_template("data-modelling.html", textout=textout)
     
 # instantiate intertopic page
 @app.route("/intertopic")
